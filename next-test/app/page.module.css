@@ -5,37 +5,32 @@
 }
 
 .head{
-  width: 30vw;
+  width: 20vw;
   height: 100vh;
-  /* /* display: flex; */
-  /* flex-direction: column; */
 }
 
 .board {
-  width: 70vw;
+  width: 80vw;
   height: 100vh;
   background-color: beige;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 .head > ul {
   display: flex;
-  width: 30vw;
+  width: 20vw;
   height: 100vh;
   justify-content: space-around;
   background-color:darkgray;
   align-items: center;
   flex-direction: column;
-
 }
-
 
 
 .head > ul li {
   list-style-type: none;
-  width:30vw;
+  width:20vw;
   height:50vh;
   background-color: lightgray;
   display: flex;
@@ -43,5 +38,4 @@
   align-items: center;
   font-size: 1rem;
   cursor: pointer;
-
 }
