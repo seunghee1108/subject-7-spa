@@ -8,8 +8,10 @@
 </head>
 <body>
   <div id="root"></div>
+  <div id="content"></div>
+
   <script type="module">
-    import { createElement, component, render } from './component.js'
+    import { createElement, component, render } from './component.js';
     const stateData = [
         { hash: '#김우진', text: '김우진' },
         { hash: '#김현',  text: '김현'  },
@@ -29,73 +31,49 @@
         { hash: '#최은철',  text: '최은철'  },
         { hash: '#홍문기',  text: '홍문기'  },
     ];
-  
-    const div = 
-    createElement("div", {id: name},
-      createElement("div", {id: title},
-        createElement("div", {id: content}, 
-      )));
+    // 각 이름에 대한 해시를 클릭했을 때의 이벤트 핸들러
+    const handleNameClick = (hash) => {
+      // 화면의 content 영역에 해당 해시의 내용을 표시
+      const contentDiv = document.getElementById('content');
+      contentDiv.innerHTML = '';
 
-    const contentDiv = document.getElementById("root");
-    contentDiv.appedchild(render(div));
-    
-    window.addEventListener("hashchange", () => {
-      const hash = window.location.hash.substr(1);
-      const body = document.getElementById("body")
-      body.innerHTML = ""
-    
-      switch (hash) {
-        case 
+      // 이름 데이터에서 현재 해시에 해당하는 객체 찾기
+      const selectedName = stateData.find(({ hash: nameHash }) => nameHash === hash);
+
+      // 선택된 이름에 대한 내용을 표시
+      if (selectedName) {
+        contentDiv.appendChild(render(createElement('div', {}, `${selectedName.text}의 내용`)));
       }
-    })
-// createElement("div", {id:"bigcont"}, 
-//       createElement("div", {id:"leftside" },
-//         ),
-//       createElement("div", {id:"middle" }, 
-//         component(stateData)
-//         ),
-//       createElement("div", {id:"rightside" }, ""
-//         ),
-//     )
+    };
 
-// const contentDiv = document.getElementById('root');
-// contentDiv.appendChild(render(div)); // dom을 렌더해서 대상에 어펜드 하기
+    // 이름 목록을 생성하는 함수
+    const createNameList = () => {
+      const nameList = stateData.map(({ hash, text }) => {
+        const nameLink = createElement('a', {
+          href: hash,
+          class: 'name-link',
+          onclick: () => handleNameClick(hash),
+        }, text);
 
+        return createElement('div', { class: 'name-item' }, nameLink);
+      });
 
-// window.addEventListener('hashchange', () => {
-//   const hash = window.location.hash.substr(1);
-//   const body = document.getElementById('body')
-//   body.innerHTML = ""
-  
-//   switch (hash) {
-//     case 'login' : 
-//     const loginBody = 
-//     createElement("div", {class:"hashBody", }
-      
-//     )
-//     body.appendChild(render(loginBody));
-//       break;
-//     case 'signup' : 
-//     const signupBody = 
-//     createElement("div", {class:"hashBody", },
-//       createElement("form", {id:"signupform"}, 
-//         createElement("input",  {}, "email"),
-//         createElement("input",  {}, ""),
-//         createElement("input",  {}, ""),
-//         createElement("input",  {}, ""),
-//         createElement("button", {}, "submit"),
-//       ),
-//     )
-//     body.appendChild(render(signupBody));
-//       break;
-//     default : 
-//       break
-//   }
-// }); 
-// // window.dispatchEvent(new Event('hashchange'));
-// window.dispatchEvent(new Event('DOMContentLoaded'));
+      return createElement('div', { id: 'name-list' }, ...nameList);
+    };
 
-</script>
+    // 초기 렌더링
+    const rootDiv = document.getElementById('root');
+    rootDiv.appendChild(render(createNameList()));
 
+    // 해시 변경 이벤트 처리
+    window.addEventListener('hashchange', () => {
+      // 해시가 변경되면 해당 이름의 내용을 표시
+      const hash = window.location.hash;
+      handleNameClick(hash);
+    });
+
+    // 페이지 로딩 시 초기 해시에 대한 처리
+    window.dispatchEvent(new Event('hashchange'));
+  </script>
 </body>
 </html>
