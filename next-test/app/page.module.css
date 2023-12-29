@@ -4,7 +4,7 @@
   height: 100vh;
 }
 
-.head{
+.head {
   width: 20vw;
   height: 100vh;
 }
@@ -39,3 +39,9 @@
   font-size: 1rem;
   cursor: pointer;
 }
+
+/* #btn {
+  width: 30vw;
+  height: 20vh;
+  
+} */
