@@ -28,18 +28,18 @@ const memberData:Members[] = [
   { hash: '방승희', name: '방승희', content: '방승희 소개', contentTwo: contentText , contentThree: '방승희 장점', contentFour: contentTextTwo },
   { hash: '변호녕', name: '변호녕', content: '변호녕 소개' , contentTwo: contentText , contentThree: '변호녕 장점', contentFour: contentTextTwo },
   { hash: '소사무엘', name: '소사무엘', content: '소사무엘 소개' , contentTwo: contentText , contentThree: '소사무엘 장점', contentFour: contentTextTwo },
-  { hash: '송영준', name: '송영준', content: '최성민 소개' , contentTwo: contentText , contentThree: '송영준 장점', contentFour: contentTextTwo },
-  { hash: '신동현', name: '신동현', content: '최성민 소개' , contentTwo: contentText , contentThree: '신동현 장점', contentFour: contentTextTwo },
-  { hash: '오승민', name: '오승민', content: '최성민 소개',  contentTwo: contentText , contentThree: '오승민 장점', contentFour: contentTextTwo },
-  { hash: '유승민', name: '유승민', content: '최성민 소개',  contentTwo: contentText , contentThree: '유승민 장점', contentFour: contentTextTwo },
-  { hash: '윤준현', name: '윤준현', content: '최성민 소개' , contentTwo: contentText , contentThree: '윤준현 장점', contentFour: contentTextTwo },
-  { hash: '이민구', name: '이민구', content: '최성민 소개' , contentTwo: contentText , contentThree: '이민구 장점', contentFour: contentTextTwo },
-  { hash: '이유안', name: '이유안', content: '최성민 소개' , contentTwo: contentText , contentThree: '이유안 장점', contentFour: contentTextTwo },
-  { hash: '이채이', name: '이채이', content: '최성민 소개' , contentTwo: contentText , contentThree: '이채이 장점', contentFour: contentTextTwo },
-  { hash: '정영식', name: '정영식', content: '최성민 소개' , contentTwo: contentText , contentThree: '정영식 장점', contentFour: contentTextTwo },
+  { hash: '송영준', name: '송영준', content: '송영준 소개' , contentTwo: contentText , contentThree: '송영준 장점', contentFour: contentTextTwo },
+  { hash: '신동현', name: '신동현', content: '신동현 소개' , contentTwo: contentText , contentThree: '신동현 장점', contentFour: contentTextTwo },
+  { hash: '오승민', name: '오승민', content: '오승민 소개',  contentTwo: contentText , contentThree: '오승민 장점', contentFour: contentTextTwo },
+  { hash: '유승민', name: '유승민', content: '유승민 소개',  contentTwo: contentText , contentThree: '유승민 장점', contentFour: contentTextTwo },
+  { hash: '윤준현', name: '윤준현', content: '윤준현 소개' , contentTwo: contentText , contentThree: '윤준현 장점', contentFour: contentTextTwo },
+  { hash: '이민구', name: '이민구', content: '이민구 소개' , contentTwo: contentText , contentThree: '이민구 장점', contentFour: contentTextTwo },
+  { hash: '이유안', name: '이유안', content: '이유안 소개' , contentTwo: contentText , contentThree: '이유안 장점', contentFour: contentTextTwo },
+  { hash: '이채이', name: '이채이', content: '이채이 소개' , contentTwo: contentText , contentThree: '이채이 장점', contentFour: contentTextTwo },
+  { hash: '정영식', name: '정영식', content: '정영식 소개' , contentTwo: contentText , contentThree: '정영식 장점', contentFour: contentTextTwo },
   { hash: '최성민', name: '최성민', content: '최성민 소개' , contentTwo: contentText , contentThree: '최성민 장점', contentFour: contentTextTwo },
-  { hash: '최은철', name: '최은철', content: '최성민 소개' , contentTwo: contentText , contentThree: '최은철 장점', contentFour: contentTextTwo },
-  { hash: '홍문기', name: '홍문기', content: '최성민 소개' , contentTwo: contentText , contentThree: '홍문기 장점', contentFour: contentTextTwo },
+  { hash: '최은철', name: '최은철', content: '최은철 소개' , contentTwo: contentText , contentThree: '최은철 장점', contentFour: contentTextTwo },
+  { hash: '홍문기', name: '홍문기', content: '홍문기 소개' , contentTwo: contentText , contentThree: '홍문기 장점', contentFour: contentTextTwo },
 ];
 
 
@@ -94,7 +94,10 @@ export default function Home() {
           <label htmlFor="customInput"></label>
           <input type="text" name="customInput" placeholder='Write your name.'/>
         </div>
-        
+        {/* <button id="btn">Show</button> */}
+        <div>
+          <button >Show</button>
+        </div>
         </div>
     </main>
   )
