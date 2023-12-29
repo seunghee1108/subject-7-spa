@@ -4,8 +4,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <h1>test</h1>
+  <div id="root"></div>
+  <script type="module">
+    import { createElement, component, render } from './component.js'
+    const stateData = [
+        { hash: '#김우진', text: '김우진' },
+        { hash: '#김현',  text: '김현'  },
+        { hash: '#방승희',  text: '방승희'  },
+        { hash: '#변호녕',  text: '변호녕'  },
+        { hash: '#소사무엘',  text: '소사무엘'  },
+        { hash: '#송영준',  text: '송영준'  },
+        { hash: '#신동현',  text: '신동현'  },
+        { hash: '#오승민',  text: '오승민'  },
+        { hash: '#유승민',  text: '유승민'  },
+        { hash: '#윤준현',  text: '윤준현'  },
+        { hash: '#이민구',  text: '이민구'  },
+        { hash: '#이유안',  text: '이유안'  },
+        { hash: '#이채이',  text: '이채이'  },
+        { hash: '#정영식',  text: '정영식'  },
+        { hash: '#최성민',  text: '최성민'  },
+        { hash: '#최은철',  text: '최은철'  },
+        { hash: '#홍문기',  text: '홍문기'  },
+    ];
+  
+    const div = 
+    createElement("div", {id: name},
+      createElement("div", {id: title},
+        createElement("div", {id: content}, 
+      )));
+
+    const contentDiv = document.getElementById("root");
+    contentDiv.appedchild(render(div));
+    
+    window.addEventListener("hashchange", () => {
+      const hash = window.location.hash.substr(1);
+      const body = document.getElementById("body")
+      body.innerHTML = ""
+    
+      switch (hash) {
+        case 
+      }
+    })
+// createElement("div", {id:"bigcont"}, 
+//       createElement("div", {id:"leftside" },
+//         ),
+//       createElement("div", {id:"middle" }, 
+//         component(stateData)
+//         ),
+//       createElement("div", {id:"rightside" }, ""
+//         ),
+//     )
+
+// const contentDiv = document.getElementById('root');
+// contentDiv.appendChild(render(div)); // dom을 렌더해서 대상에 어펜드 하기
+
+
+// window.addEventListener('hashchange', () => {
+//   const hash = window.location.hash.substr(1);
+//   const body = document.getElementById('body')
+//   body.innerHTML = ""
+  
+//   switch (hash) {
+//     case 'login' : 
+//     const loginBody = 
+//     createElement("div", {class:"hashBody", }
+      
+//     )
+//     body.appendChild(render(loginBody));
+//       break;
+//     case 'signup' : 
+//     const signupBody = 
+//     createElement("div", {class:"hashBody", },
+//       createElement("form", {id:"signupform"}, 
+//         createElement("input",  {}, "email"),
+//         createElement("input",  {}, ""),
+//         createElement("input",  {}, ""),
+//         createElement("input",  {}, ""),
+//         createElement("button", {}, "submit"),
+//       ),
+//     )
+//     body.appendChild(render(signupBody));
+//       break;
+//     default : 
+//       break
+//   }
+// }); 
+// // window.dispatchEvent(new Event('hashchange'));
+// window.dispatchEvent(new Event('DOMContentLoaded'));
+
+</script>
+
 </body>
 </html>
