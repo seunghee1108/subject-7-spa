@@ -20,6 +20,7 @@ Dolor non aliquam elit risus elementum dictumst. Eu egestas turpis diam dictum. 
 const contentTextTwo = `Lorem ipsum dolor sit amet consectetur. Consectetur morbi fames in id sit turpis eget lectus ut. Neque orci hendrerit scelerisque nam ac ac eu dui urna. Aliquet vulputate tortor odio ut. Turpis nam sagittis non iaculis. Eu purus mollis cursus sagittis sit. Tempor tempor tincidunt ac in. Ullamcorper eros ullamcorper tincidunt sagittis. Libero massa nec gravida libero. Volutpat orci bibendum morbi porta mauris pellentesque. Natoque gravida at penatibus vestibulum purus tristique mollis imperdiet amet. Sed magna dignissim luctus cras nulla. Ultrices sapien sed quis consectetur turpis fusce sem facilisis eget.
 `
 
+
 // 멤버 데이터 배열 생성
 const memberData:Members[] = [
   { hash: '김우진', name: '김우진', content: '김우진 소개' , contentTwo: contentText , contentThree: '김우진 장점', contentFour: contentTextTwo },
@@ -88,8 +89,12 @@ export default function Home() {
           <div key={hash} id={hash} style={{ display: section === hash ? 'block' : 'none' }}>
             {contentFour}
           </div>
-        ))}    
-
+        ))}
+        <div>
+          <label htmlFor="customInput"></label>
+          <input type="text" name="customInput" placeholder='Write your name.'/>
+        </div>
+        
         </div>
     </main>
   )
