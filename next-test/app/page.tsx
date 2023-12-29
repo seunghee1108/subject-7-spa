@@ -22,25 +22,24 @@ const contentTextTwo = `Lorem ipsum dolor sit amet consectetur. Consectetur morb
 
 // 멤버 데이터 배열 생성
 const memberData:Members[] = [
-  { hash: '김우진', name: '김우진', content: '김우진 소개' , contentTwo: contentText , contentThree : '김우진 장점', contentFour: contentTextTwo },
-  // { hash: '김현', name: '김현', content: '김현 소개' , contentTwo: contentText , contentThree : '김현 장점' },
-  // { hash: '방승희', name: '방승희', content: '방승희 소개', contentTwo: contentText , contentThree : '방승희 장점' },
-  // { hash: '변호녕', name: '변호녕', content: '변호녕 소개' , contentTwo: '내용'},
-  // { hash: '소사무엘', name: '소사무엘', content: '소사무엘 소개' , contentTwo: '내용'},
-  // { hash: '송영준', name: '송영준', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '신동현', name: '신동현', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '오승민', name: '오승민', content: '최성민 소개', contentTwo: '내용' },
-  // { hash: '유승민', name: '유승민', content: '최성민 소개', contentTwo: '내용' },
-  // { hash: '윤준현', name: '윤준현', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '이민구', name: '이민구', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '이유안', name: '이유안', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '이채이', name: '이채이', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '정영식', name: '정영식', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '최성민', name: '최성민', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '최은철', name: '최은철', content: '최성민 소개' , contentTwo: '내용'},
-  // { hash: '홍문기', name: '홍문기', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '김우진', name: '김우진', content: '김우진 소개' , contentTwo: contentText , contentThree: '김우진 장점', contentFour: contentTextTwo },
+  { hash: '김현', name: '김현', content: '김현 소개' , contentTwo: contentText , contentThree: '김현 장점', contentFour: contentTextTwo },
+  { hash: '방승희', name: '방승희', content: '방승희 소개', contentTwo: contentText , contentThree: '방승희 장점', contentFour: contentTextTwo },
+  { hash: '변호녕', name: '변호녕', content: '변호녕 소개' , contentTwo: contentText , contentThree: '변호녕 장점', contentFour: contentTextTwo },
+  { hash: '소사무엘', name: '소사무엘', content: '소사무엘 소개' , contentTwo: contentText , contentThree: '소사무엘 장점', contentFour: contentTextTwo },
+  { hash: '송영준', name: '송영준', content: '최성민 소개' , contentTwo: contentText , contentThree: '송영준 장점', contentFour: contentTextTwo },
+  { hash: '신동현', name: '신동현', content: '최성민 소개' , contentTwo: contentText , contentThree: '신동현 장점', contentFour: contentTextTwo },
+  { hash: '오승민', name: '오승민', content: '최성민 소개',  contentTwo: contentText , contentThree: '오승민 장점', contentFour: contentTextTwo },
+  { hash: '유승민', name: '유승민', content: '최성민 소개',  contentTwo: contentText , contentThree: '유승민 장점', contentFour: contentTextTwo },
+  { hash: '윤준현', name: '윤준현', content: '최성민 소개' , contentTwo: contentText , contentThree: '윤준현 장점', contentFour: contentTextTwo },
+  { hash: '이민구', name: '이민구', content: '최성민 소개' , contentTwo: contentText , contentThree: '이민구 장점', contentFour: contentTextTwo },
+  { hash: '이유안', name: '이유안', content: '최성민 소개' , contentTwo: contentText , contentThree: '이유안 장점', contentFour: contentTextTwo },
+  { hash: '이채이', name: '이채이', content: '최성민 소개' , contentTwo: contentText , contentThree: '이채이 장점', contentFour: contentTextTwo },
+  { hash: '정영식', name: '정영식', content: '최성민 소개' , contentTwo: contentText , contentThree: '정영식 장점', contentFour: contentTextTwo },
+  { hash: '최성민', name: '최성민', content: '최성민 소개' , contentTwo: contentText , contentThree: '최성민 장점', contentFour: contentTextTwo },
+  { hash: '최은철', name: '최은철', content: '최성민 소개' , contentTwo: contentText , contentThree: '최은철 장점', contentFour: contentTextTwo },
+  { hash: '홍문기', name: '홍문기', content: '최성민 소개' , contentTwo: contentText , contentThree: '홍문기 장점', contentFour: contentTextTwo },
 ];
-
 
 
 export default function Home() {
@@ -76,17 +75,17 @@ export default function Home() {
           </div>
         ))}
       {memberData.map(({ hash, contentTwo })=> (
-          <div key={`${hash}-additional2`} id={`${hash}-additional2`}  style={{ display: section === hash ? 'block' : 'none' }}>
+          <div key={hash} id={hash}  style={{ display: section === hash ? 'block' : 'none' }}>
             {contentTwo}
           </div>
         ))}
       {memberData.map(({ hash, contentThree })=> (
-          <div key={hash} id={hash} style={{ display: section === hash ? 'block'   : 'none' }}>
+          <div key={hash} id={hash} style={{ display: section === hash ? 'block' : 'none' }}>
             {contentThree}
           </div>
         ))}
       {memberData.map(({ hash, contentFour })=> (
-          <div key={hash} id={hash} style={{ display: section === hash ? 'block'   : 'none' }}>
+          <div key={hash} id={hash} style={{ display: section === hash ? 'block' : 'none' }}>
             {contentFour}
           </div>
         ))}    
