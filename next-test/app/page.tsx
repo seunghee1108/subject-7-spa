@@ -1,113 +1,87 @@
-import Image from 'next/image'
+// import Image from 'next/image'
+
+// export default function Home() {
+//   return (
+
+//   )
+// }
+
+'use client';
+import styles from './page.module.css'
+import { useState } from 'react';  // CSS 모듈(page.module.css)을 사용하여 컴포넌트에 스타일을 적용 
+
+// 'Members'라는 인터페이스를 정의한다.
+// 각 멤버의 정보를 담는 객체의 형태를 정의한 것이다.
+interface Members{
+  hash:string;
+  name:string;
+  content:string;
+  contentTwo:string;
+}
+
+// 멤버 데이터 배열 생성
+const memberData:Members[] = [
+  { hash: '김우진', name: '김우진', content: '김우진 소개' , contentTwo: '내용' },
+  { hash: '김현', name: '김현', content: '김현 소개' , contentTwo: '내용'},
+  { hash: '방승희', name: '방승희', content: '방승희 소개', contentTwo: '내용' },
+  { hash: '변호녕', name: '변호녕', content: '변호녕 소개' , contentTwo: '내용'},
+  { hash: '소사무엘', name: '소사무엘', content: '소사무엘 소개' , contentTwo: '내용'},
+  { hash: '송영준', name: '송영준', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '신동현', name: '신동현', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '오승민', name: '오승민', content: '최성민 소개', contentTwo: '내용' },
+  { hash: '유승민', name: '유승민', content: '최성민 소개', contentTwo: '내용' },
+  { hash: '윤준현', name: '윤준현', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '이민구', name: '이민구', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '이유안', name: '이유안', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '이채이', name: '이채이', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '정영식', name: '정영식', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '최성민', name: '최성민', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '최은철', name: '최은철', content: '최성민 소개' , contentTwo: '내용'},
+  { hash: '홍문기', name: '홍문기', content: '최성민 소개' , contentTwo: '내용'},
+];
 
 export default function Home() {
+  // useState 훅을 이용한 상태 관리
+  // section 이라는 상태 변수와 그 상태를 업데이트할 수 있는 useSection 함수를 생성한다. 
+  const [section, setSection] = useState('');
+
+  // 멤버의 이름이 클릭되었을 때 호출되는 함수이다.
+  // 선택된 멤버의 'hash'값을 'section' 상태로 업데이트 하고, 현재 페이지의 해시 값을 변경한다.
+  const nameClick = (targetSection:string) => {
+    setSection(targetSection);
+    window.location.hash = `#${targetSection}`;
+  };
+
+  
+  // 페이지의 메인 컴포넌트를 정의한다.
+  // 이 안에서 멤버 목록('ul')과 멤버 소개 내용('div')이 표시된다.
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className={styles.main}>
+      <div className={styles.head}>
+        {/* <div className={styles.box}> */}
+        <ul>
+          {/* 멤버 목록 출력 : 멤버 데이터를 매핑하여 각 멤버의 이름을 목록으로 출력하고, 클릭시 'nameClick' 함수를 호출한다. */}
+        {memberData.map(({ hash, name }) => (
+          <li key={hash} onClick={() => nameClick(hash)}>{name}</li>
+          ))}
+        </ul>
+      </div>
+      <div className={styles.board}>
+        {/* 멤버 소개 내용 출력 : 멤버 데이터를 매핑하여 각 멤버의 소개 내용을 출력하고, 현재 선택된 멤버에 해당하는 내용만 보여주도록 스타일을 제어한다. */}
+      {memberData.map(({ hash, content }) => (
+        <div key={hash} id={hash} style={{ display: section === hash ? 'block' : 'none' }}>
+            {content}
+          </div>
+        ))}
+        {/* 추가된 div들 */}
+      {memberData.map(({ hash, contentTwo })=> (
+          <div key={`${hash}-additional2`} id={`${hash}-additional2`}  style={{ display: section === 'additionalDiv1' ? 'block' : 'none' }}>
+            {contentTwo}
+          </div>
+          ))}
+    
+
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
   )
 }
