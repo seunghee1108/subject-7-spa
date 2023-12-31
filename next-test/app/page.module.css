@@ -22,7 +22,7 @@
   width: 20vw;
   height: 100vh;
   justify-content: space-around;
-  background-color:darkgray;
+  background-color:white;
   align-items: center;
   flex-direction: column;
 }
@@ -32,7 +32,7 @@
   list-style-type: none;
   width:20vw;
   height:50vh;
-  background-color: lightgray;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,6 +40,10 @@
   cursor: pointer;
 }
 
+#hash {
+  height: 20vh;
+  font-size: 2rem;
+}
 /* #btn {
   width: 30vw;
   height: 20vh;
